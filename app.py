@@ -1,7 +1,8 @@
 import os
 import sys
 from datetime import date
-from models import *
+from models.game import *
+
 os.system("clear")
 
 print("\n\n\n\n")
