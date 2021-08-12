@@ -2,7 +2,7 @@ import os
 import sys
 from datetime import date
 
-from game import Game
+from models import Game
 os.system("clear")
 
 print("\n\n\n\n")
@@ -31,4 +31,7 @@ while True and dice_to_keep != 'x':
     player = game.players[current_player_index]
 
     print(f"\n\n\n=================================\n{player} is up!\n=================================\n\n")
-    dice_to_keep = input("what dice do you want to keep? ")
+    print("First Role:")
+
+    keeps = [] # the dice to keep
+    sets = [] # submitted sets

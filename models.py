@@ -1,4 +1,6 @@
 import hashlib
+import random
+
 class Game:
   def __init__(self, players):
     self.players = players
@@ -22,3 +24,12 @@ class Game:
     for name in self.scores.keys():
       print(f"++ {name} has {self.scores[name]} points")
     print( "+++++++++++++++++++++++++++++++++++++++++")
+
+
+## Dice Model that other dice types will inherit from
+class Dice:
+  def __init__(self):
+    print('init')
+
+  def role(self):
+    raise "you must implement this method"
