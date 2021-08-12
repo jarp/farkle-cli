@@ -7,7 +7,6 @@ class Game:
     for player in players:
       self.scores[player] = 0
 
-
   def add_points(self, player, points):
     print(f"[add points] adding {points} points for {player}")
     self.scores[player] += points
@@ -17,8 +16,6 @@ class Game:
       if score >= 10000:
         return True
     return False
-
-
 
   def print_scores(self):
     print( "+++++++++++++++++++++++++++++++++++++++++")
