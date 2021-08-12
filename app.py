@@ -23,6 +23,7 @@ game = Game(players=players)
 # set some control variables
 current_player_index = 0
 dice_to_keep = ""
+standard_dice_count = 6
 
 # run while user does not enter x
 while True and dice_to_keep != 'x':
@@ -34,3 +35,14 @@ while True and dice_to_keep != 'x':
 
     keeps = [] # the dice to keep
     sets = [] # submitted sets
+
+    for turn in range(10):
+        # determine how many dice to role (total - the dice kept by user)
+        remaining_dice_count = standard_dice_count - len(keeps)
+        print(f'rolling {remaining_dice_count} dice')
+        dice_to_keep = input("which do you want to keep? (0  to end turn)  ")
+
+        # control the loop by letting user break out of it
+        if dice_to_keep == str(0) or dice_to_keep == 'x':
+          message = "OK I guess you are done."
+          break
