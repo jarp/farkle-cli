@@ -1,5 +1,8 @@
+from models.dice import NumericDice
+from models.cup import Cup
+
 ## The act of roling 1 or more dice
-class Role:
+class Roll:
   def __init__(self, number_of_dice=6):
     self.dice = []
     for i in range(number_of_dice):

@@ -2,6 +2,9 @@ import os
 import sys
 from datetime import date
 from models.game import *
+from models.roll import *
+from models.dice import *
+from models.cup import *
 
 os.system("clear")
 
@@ -39,12 +42,18 @@ while True and dice_to_keep != 'x':
     for turn in range(10):
         # determine how many dice to role (total - the dice kept by user)
         remaining_dice_count = standard_dice_count - len(keeps)
-        print(f'rolling {remaining_dice_count} dice')
+        roll = Roll(remaining_dice_count)
+        result = roll.do()
+        Roll.print_dice(result)
+
+        ## If score has no valid dice to play, end turn
+        if Score.is_scorable(result) == False:
+            message = "Oh-oh... dice have no scores."
+            break
+
         dice_to_keep = input("which do you want to keep? (0  to end turn)  ")
 
         # control the loop by letting user break out of it
         if dice_to_keep == str(0) or dice_to_keep == 'x':
-          message = "OK I guess you are done."
-          # ternary Operator to switch player
           break
 
