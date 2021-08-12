@@ -1,6 +1,8 @@
 import os
 import sys
 from datetime import date
+
+from game import Game
 os.system("clear")
 
 print("\n\n\n\n")
@@ -17,6 +19,5 @@ for i in range(2):
 
 print("There are {} players. There names are {}".format(len(players), ", ".join(players)))
 
-game = {'created_at': date.today()}
-game['players'] = players
+game = Game(players=players)
 print(game)
