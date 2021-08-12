@@ -21,14 +21,13 @@ print("There are {} players. There names are {}".format(len(players), ", ".join(
 game = Game(players=players)
 
 # set some control variables
-current_player_index = 0
 dice_to_keep = ""
 standard_dice_count = 6
 
 # run while user does not enter x
 while True and dice_to_keep != 'x':
     # use the index control variable to get player 1 [0] or 2 [1]
-    player = game.players[current_player_index]
+    player = game.next_player()
 
     print(f"\n\n\n=================================\n{player} is up!\n=================================\n\n")
     print("First Role:")
@@ -45,8 +44,6 @@ while True and dice_to_keep != 'x':
         # control the loop by letting user break out of it
         if dice_to_keep == str(0) or dice_to_keep == 'x':
           message = "OK I guess you are done."
-
           # ternary Operator to switch player
-          current_player_index = 1 if current_player_index == 0 else 0
           break
 
