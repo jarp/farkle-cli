@@ -9,12 +9,21 @@
 # 1-2-3-4-5-6  	3000 points
 # 3 Pairs 	1500 points (including 4-of-a-kind and a pair)
 
+## This class contains all the logic for scoring
+## Its a bit complicated
+
+# TODO: added some more comments
+
 class Score:
   def __init__(self,sets):
+    # sets are the small combos that contain points
     self.sets = []
+
+    # if sets exist, append new sets
     for set in sets:
       if len(set) > 0:
         self.sets.append(set)
+
     self.extract_threes()
     self.clean_up()
     self.total_points = 0
@@ -27,12 +36,17 @@ class Score:
 
     total_points = 0
 
+    # a straight is worth 3000
     if self.straight():
       total_points = 3000
       self.sets = []
+
+    # three pairs is 1500
     elif self.three_pair():
       total_points = 1500
       self.sets = []
+
+    # process to capture the points for the rest of the possible combos
     if len(self.sets):
       total_points += self.determine_remaining()
     self.total_points = total_points
@@ -44,7 +58,6 @@ class Score:
       if len(dice) == 0:
         self.sets.pop(i)
       i += 1
-
 
   def extract_threes(self):
     place_holder_set = []
@@ -106,14 +119,6 @@ class Score:
       return True
     return False
 
-  # def pairs(self):
-  #   p = self.default_hash()
-  #   for s in self.sets:
-  #     if len(set(s)) == 1:
-  #       p[s[0]] = len(s)
-
-  #   return p
-
   def max(self):
     return 100000
 
@@ -128,16 +133,6 @@ class Score:
       }
 
     return count_hash
-
-  # def default_hash(self):
-  #   return {
-  #     '1': 0,
-  #     '2': 0,
-  #     '3': 0,
-  #     '4': 0,
-  #     '5': 0,
-  #     '6': 0
-  #     }
 
   @classmethod
   def is_scorable(cls,dice):
