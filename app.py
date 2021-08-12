@@ -45,4 +45,8 @@ while True and dice_to_keep != 'x':
         # control the loop by letting user break out of it
         if dice_to_keep == str(0) or dice_to_keep == 'x':
           message = "OK I guess you are done."
+
+          # ternary Operator to switch player
+          current_player_index = 1 if current_player_index == 0 else 0
           break
+
