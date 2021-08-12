@@ -1,6 +1,8 @@
+import hashlib
 class Game:
   def __init__(self, players):
     self.players = players
+    self.id = hashlib.md5()
     self.scores = {}
     for player in players:
       self.scores[player] = 0
