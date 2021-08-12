@@ -52,3 +52,30 @@ class ListDice(Dice):
     random_index = random.randint(0, (len(self.values) -1) )
     # print("get value between 0 and {} which is {}".format( (len(self.values) -1), random_index))
     return self.values[random_index]
+
+## The act of roling 1 or more dice
+class Role:
+  def __init__(self, number_of_dice=6):
+    self.dice = []
+    for i in range(number_of_dice):
+      self.dice.append(NumericDice())
+      self.cup = Cup(dice=self.dice)
+
+  def do(self):
+    return self.cup.role()
+
+  @classmethod
+  def print_dice(cls, dice):
+    print("print all dice", dice)
+    d = text2art("".join(map(str, dice)), font='block', chr_ignore=True)
+    print(d)
+
+class Cup:
+  def __init__(self, dice=[]):
+    self.dice = dice
+
+  def role(self):
+    results = []
+    for die in self.dice:
+      results.append(die.role())
+    return results
